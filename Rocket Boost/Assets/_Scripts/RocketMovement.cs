@@ -13,62 +13,93 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] ParticleSystem rightThrustEffect;
     [SerializeField] ParticleSystem leftThrustEffect;
 
-    Rigidbody rb;
-    AudioSource audioSource;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] AudioSource audioSource;
+
+    private bool leftPressed;
+    private bool rightPressed;
+    private bool spacePressed;
+
+    
+    
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        
     }
     private void Update()
     {
         HandleInput();
     }
-
-    private void HandleInput()
+    private void FixedUpdate()
     {
         HandleRotation();
         HandleThrust();
     }
-    private void HandleRotation()
+
+    private void HandleInput()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            leftPressed = true;
+        }
+        else
+        {
+            leftPressed = false;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            rightPressed = true;
+        }
+        else
+        {
+            rightPressed = false;
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            spacePressed = true;
+        }
+        else
+        {
+            spacePressed = false;
+        }
+    }
+    private void HandleRotation()
+    {
+        if (leftPressed)
         {
             if (!audioSource.isPlaying) audioSource.PlayOneShot(sideThrustSound);
             if (!rightThrustEffect.isPlaying) rightThrustEffect.Play();
             ApplyRotation(rotationPower);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        if (rightPressed)
         {
             if (!audioSource.isPlaying) audioSource.PlayOneShot(sideThrustSound);
             if (!leftThrustEffect.isPlaying) leftThrustEffect.Play();
             ApplyRotation(-rotationPower);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        if (!leftPressed && !rightPressed)
         {
-            audioSource.Stop();
+            if (!spacePressed) audioSource.Stop();
             rightThrustEffect.Stop();
             leftThrustEffect.Stop();
         }
     }
     private void HandleThrust()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (spacePressed)
         {
-            rb.AddRelativeForce(Vector3.up * thrustPower * Time.deltaTime);
+            rb.AddRelativeForce(Vector3.up * thrustPower * Time.fixedDeltaTime);
             if (!audioSource.isPlaying) audioSource.PlayOneShot(thrustSound);
             if (!mainThrustEffect.isPlaying) mainThrustEffect.Play();
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        if (!spacePressed)
         {
-            audioSource.Stop();
+            if (!leftPressed && !rightPressed) audioSource.Stop();
             mainThrustEffect.Stop();
         }
     }
     private void ApplyRotation(float rotationForce)
     {
-        //rb.freezeRotation = true;
-        transform.Rotate(Vector3.forward * rotationForce * Time.deltaTime);
-        //rb.freezeRotation = false;
+        transform.Rotate(Vector3.forward * rotationForce * Time.fixedDeltaTime);
     }
 }

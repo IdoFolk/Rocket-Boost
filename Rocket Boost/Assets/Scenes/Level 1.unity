@@ -1093,7 +1093,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.03
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3652,10 +3652,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Rocket '
       objectReference: {fileID: 0}
-    - target: {fileID: 2064461861033298714, guid: 170a0be74a8d1054eb13bc28843e5c7f, type: 3}
-      propertyPath: sideThrustSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 0119fba2f736935468e3e46df71303f3, type: 3}
     - target: {fileID: 2064461861033298716, guid: 170a0be74a8d1054eb13bc28843e5c7f, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3699,10 +3695,6 @@ PrefabInstance:
     - target: {fileID: 2064461861033298716, guid: 170a0be74a8d1054eb13bc28843e5c7f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8032542313434018989, guid: 170a0be74a8d1054eb13bc28843e5c7f, type: 3}
-      propertyPath: respawnDelay
-      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170a0be74a8d1054eb13bc28843e5c7f, type: 3}
