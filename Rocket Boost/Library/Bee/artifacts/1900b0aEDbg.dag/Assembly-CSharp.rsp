@@ -397,9 +397,13 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/_Scripts/AudioManager.cs"
 "Assets/_Scripts/CollisionHandler.cs"
+"Assets/_Scripts/DontDestroy.cs"
+"Assets/_Scripts/GameManager.cs"
 "Assets/_Scripts/MainMenu.cs"
 "Assets/_Scripts/ObstacleMovement.cs"
+"Assets/_Scripts/PauseMenu.cs"
 "Assets/_Scripts/RocketMovement.cs"
 -langversion:9.0
 

@@ -5,32 +5,59 @@ using UnityEngine;
 
 public class RocketMovement : MonoBehaviour
 {
+    [Header("General")]
+    [SerializeField] CollisionHandler collisionHandler;
+
+    [Header("physics")]
     [SerializeField] float thrustPower = 1000f;
     [SerializeField] float rotationPower = 100f;
-    [SerializeField] AudioClip thrustSound;
-    [SerializeField] AudioClip sideThrustSound;
+    [SerializeField] Rigidbody rb;
+
+    [Header("Particle")]
     [SerializeField] ParticleSystem mainThrustEffect;
     [SerializeField] ParticleSystem rightThrustEffect;
     [SerializeField] ParticleSystem leftThrustEffect;
 
-    [SerializeField] Rigidbody rb;
-    [SerializeField] AudioSource audioSource;
+    [Header("Audio")]
+    [SerializeField] AudioSource mainThrusteraudioSource;
+    [SerializeField] AudioSource sideThrusteraudioSource;
+
+    [Header("Fuel")]
+    [SerializeField] float fuelTank;
+    [SerializeField] float fuelConsumption;
+    [SerializeField] float fuelCapsulesValue;
+    [SerializeField] float lowFuelDetectionRange;
+    public float fuel; //temp
 
     private bool leftPressed;
     private bool rightPressed;
     private bool spacePressed;
 
-
+    private void Start()
+    {
+        fuel = fuelTank;
+    }
     private void Update()
     {
         HandleInput();
+        LowFuelDetection();
     }
     private void FixedUpdate()
     {
         HandleRotation();
         HandleThrust();
     }
-
+    public void AddFuel()
+    {
+        fuel += fuelCapsulesValue;
+    }
+    private void LowFuelDetection()
+    {
+        if (fuel <= lowFuelDetectionRange)
+        {
+            collisionHandler.PlayLowFuelSFX();
+        }
+    }
     private void HandleInput()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -62,34 +89,35 @@ public class RocketMovement : MonoBehaviour
     {
         if (leftPressed)
         {
-            if (!audioSource.isPlaying) audioSource.PlayOneShot(sideThrustSound);
+            if (!sideThrusteraudioSource.isPlaying) sideThrusteraudioSource.Play();
             if (!rightThrustEffect.isPlaying) rightThrustEffect.Play();
             ApplyRotation(rotationPower);
         }
         if (rightPressed)
         {
-            if (!audioSource.isPlaying) audioSource.PlayOneShot(sideThrustSound);
+            if (!sideThrusteraudioSource.isPlaying) sideThrusteraudioSource.Play();
             if (!leftThrustEffect.isPlaying) leftThrustEffect.Play();
             ApplyRotation(-rotationPower);
         }
         if (!leftPressed && !rightPressed)
         {
-            if (!spacePressed) audioSource.Stop();
+            sideThrusteraudioSource.Stop();
             rightThrustEffect.Stop();
             leftThrustEffect.Stop();
         }
     }
     private void HandleThrust()
     {
-        if (spacePressed)
+        if (spacePressed && fuel >= 0)
         {
             rb.AddRelativeForce(Vector3.up * thrustPower * Time.fixedDeltaTime);
-            if (!audioSource.isPlaying) audioSource.PlayOneShot(thrustSound);
+            if (!mainThrusteraudioSource.isPlaying) mainThrusteraudioSource.Play();
             if (!mainThrustEffect.isPlaying) mainThrustEffect.Play();
+            fuel -= fuelConsumption * Time.fixedDeltaTime; 
         }
-        if (!spacePressed)
+        if (!spacePressed || fuel <= 0)
         {
-            if (!leftPressed && !rightPressed) audioSource.Stop();
+            mainThrusteraudioSource.Stop();
             mainThrustEffect.Stop();
         }
     }
@@ -97,4 +125,5 @@ public class RocketMovement : MonoBehaviour
     {
         transform.Rotate(Vector3.forward * rotationForce * Time.fixedDeltaTime);
     }
+    
 }

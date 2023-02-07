@@ -6,21 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] float respawnDelay = 1f;
     [SerializeField] float finishDelay = 1f;
-    [SerializeField] AudioClip crashSound;
-    [SerializeField] AudioClip finishSound;
+    [SerializeField] RocketMovement rocketMovement;
+
+    [Header("Particle")]
     [SerializeField] ParticleSystem crashParticleEffect;
     [SerializeField] ParticleSystem finishParticleEffect;
 
-    AudioSource audioSource;
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip finishSound;
+    [SerializeField] AudioClip fuelCapsuleSound;
+    [SerializeField] AudioClip lowFuelSound;
+
 
     private bool isTransitioning;
     private bool collisionDisabled;
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+
     private void Update()
     {
         CheatCodes();
@@ -39,6 +44,20 @@ public class CollisionHandler : MonoBehaviour
                 RocketCrash();
                 break;
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Fuel":
+                GetFuelCapsule(other);
+                break;
+        }
+
+    }
+    public void PlayLowFuelSFX()
+    {
+        if(!audioSource.isPlaying) audioSource.PlayOneShot(lowFuelSound);
     }
     private void Respawn()
     {
@@ -72,6 +91,13 @@ public class CollisionHandler : MonoBehaviour
             finishParticleEffect.Play();
             GetComponent<RocketMovement>().enabled = false;
             Invoke("NextLevel", finishDelay);
+    }
+    private void GetFuelCapsule(Collider other)
+    {
+        audioSource.Stop();
+        audioSource.PlayOneShot(fuelCapsuleSound);
+        rocketMovement.AddFuel();
+        other.gameObject.SetActive(false);
     }
     private void CheatCodes()
     {
