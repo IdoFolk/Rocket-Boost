@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RocketMovement : MonoBehaviour
 {
+    [SerializeField] Slider fuelBar;
+ 
     [Header("General")]
     [SerializeField] CollisionHandler collisionHandler;
 
@@ -12,6 +15,7 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] float thrustPower = 1000f;
     [SerializeField] float rotationPower = 100f;
     [SerializeField] Rigidbody rb;
+    
 
     [Header("Particle")]
     [SerializeField] ParticleSystem mainThrustEffect;
@@ -32,24 +36,36 @@ public class RocketMovement : MonoBehaviour
     private bool leftPressed;
     private bool rightPressed;
     private bool spacePressed;
-
     private void Start()
     {
+        fuelBar.maxValue = fuelTank;
+        mainThrusteraudioSource = GameAudioManager.instance.mainThrusterAudioSource;
+        sideThrusteraudioSource = GameAudioManager.instance.sideThrusterAudioSource;
         fuel = fuelTank;
     }
     private void Update()
     {
+        fuelBar.value = fuel;
         HandleInput();
         LowFuelDetection();
     }
     private void FixedUpdate()
     {
-        HandleRotation();
-        HandleThrust();
+            HandleRotation();
+            HandleThrust();
     }
     public void AddFuel()
     {
         fuel += fuelCapsulesValue;
+    }
+    
+    public void StopAllEffectsAndSounds()
+    {
+        sideThrusteraudioSource.Stop();
+        mainThrusteraudioSource.Stop();
+        rightThrustEffect.Stop();
+        leftThrustEffect.Stop();
+        mainThrustEffect.Stop();
     }
     private void LowFuelDetection()
     {

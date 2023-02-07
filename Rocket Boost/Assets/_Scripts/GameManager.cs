@@ -6,16 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public static bool MusicOn;
     public static bool SFXOn;
 
     [SerializeField] GameObject pauseMenu;
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
         PauseMenu();
@@ -29,18 +41,5 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(true);
         }
     }
-    private void CheckMusic()
-    {
-        if (MusicOn)
-        {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneAt(0))
-            {
-
-            }
-        }
-    }
-    private void CheckSFX()
-    {
-
-    }
+    
 }

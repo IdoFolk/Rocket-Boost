@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb0065fd57572c4bb596ff7bb33b4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuelBar: {fileID: 0}
   collisionHandler: {fileID: 8032542313434018989}
   thrustPower: 1000
   rotationPower: 100
@@ -189,7 +190,7 @@ MonoBehaviour:
   rocketMovement: {fileID: 2064461861033298714}
   crashParticleEffect: {fileID: 2190538552097852925}
   finishParticleEffect: {fileID: 2190962707782684072}
-  audioSource: {fileID: 0}
+  generalAudioSource: {fileID: 0}
   crashSound: {fileID: 8300000, guid: cc492f94cfb59614fab995d21a421f1d, type: 3}
   finishSound: {fileID: 8300000, guid: 275cf1338a8d4c54b8a17c80f932d83b, type: 3}
   fuelCapsuleSound: {fileID: 8300000, guid: b3c02119b7a4b414393d8012e39588b6, type: 3}
