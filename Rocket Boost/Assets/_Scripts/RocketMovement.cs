@@ -20,12 +20,7 @@ public class RocketMovement : MonoBehaviour
     private bool rightPressed;
     private bool spacePressed;
 
-    
-    
-    private void Start()
-    {
-        
-    }
+
     private void Update()
     {
         HandleInput();
