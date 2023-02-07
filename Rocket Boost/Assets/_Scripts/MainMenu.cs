@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] AudioSource buttonClickSFX;
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
@@ -13,5 +14,10 @@ public class MainMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void PlayClickSFX()
+    {
+        buttonClickSFX.Stop();
+        buttonClickSFX.Play();
     }
 }
