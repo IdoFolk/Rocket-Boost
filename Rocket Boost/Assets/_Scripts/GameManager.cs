@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public static bool MusicOn;
-    public static bool SFXOn;
+    public static bool musicOn = true;
+    public static bool sfxOn = true;
+    public static bool GamePaused;
 
-    [SerializeField] GameObject pauseMenu;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -32,13 +32,31 @@ public class GameManager : MonoBehaviour
     {
         PauseMenu();
     }
-
+    public void ActivateBackgroundMusicDelay()
+    {
+        Invoke("ActivateBackgroundMusic", 0.1f);
+    }
+    private void ActivateBackgroundMusic()
+    {
+        GameAudioManager.instance.gameObject.SetActive(true);
+    }
     private void PauseMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
+            if (!DontDestroyPauseMenu.instance.gameObject.activeSelf)
+            {
+                GameAudioManager.instance.StopSFX();
+                Time.timeScale = 0;
+                DontDestroyPauseMenu.instance.gameObject.SetActive(true);
+                GamePaused = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                DontDestroyPauseMenu.instance.gameObject.SetActive(false);
+                GamePaused = false;
+            }
         }
     }
     

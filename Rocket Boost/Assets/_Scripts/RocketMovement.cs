@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class RocketMovement : MonoBehaviour
 {
-    [SerializeField] Slider fuelBar;
- 
     [Header("General")]
     [SerializeField] CollisionHandler collisionHandler;
+    [SerializeField] HudManager hudManager;
 
     [Header("physics")]
     [SerializeField] float thrustPower = 1000f;
@@ -38,14 +37,14 @@ public class RocketMovement : MonoBehaviour
     private bool spacePressed;
     private void Start()
     {
-        fuelBar.maxValue = fuelTank;
+        hudManager.fuelBar.maxValue = fuelTank;
         mainThrusteraudioSource = GameAudioManager.instance.mainThrusterAudioSource;
         sideThrusteraudioSource = GameAudioManager.instance.sideThrusterAudioSource;
         fuel = fuelTank;
     }
     private void Update()
     {
-        fuelBar.value = fuel;
+        hudManager.fuelBar.value = fuel;
         HandleInput();
         LowFuelDetection();
     }
@@ -76,28 +75,34 @@ public class RocketMovement : MonoBehaviour
     }
     private void HandleInput()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            hudManager.PressedLeftControlButtonColor();
             leftPressed = true;
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
+            hudManager.UnPressedLeftControlButtonColor();
             leftPressed = false;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            hudManager.PressedRightControlButtonColor();
             rightPressed = true;
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
         {
+            hudManager.UnPressedRightControlButtonColor();
             rightPressed = false;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            hudManager.PressedUpControlButtonColor();
             spacePressed = true;
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
+            hudManager.UnPressedUpControlButtonColor();
             spacePressed = false;
         }
     }

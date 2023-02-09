@@ -873,6 +873,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonClickSFX: {fileID: 1311123676}
+  musicButtonToggleOn: {fileID: 910440648}
+  musicButtonToggleOff: {fileID: 1365187096}
+  sfxButtonToggleOn: {fileID: 2116322051}
+  sfxButtonToggleOff: {fileID: 1388249581}
 --- !u!1 &490580997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1023,7 @@ GameObject:
   - component: {fileID: 539566410}
   - component: {fileID: 539566409}
   m_Layer: 0
-  m_Name: Audio Manager
+  m_Name: Menu Audio Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1359,6 +1363,7 @@ GameObject:
   - component: {fileID: 606381947}
   - component: {fileID: 606381946}
   - component: {fileID: 606381945}
+  - component: {fileID: 606381949}
   m_Layer: 5
   m_Name: Menu Canvas
   m_TagString: Untagged
@@ -1450,6 +1455,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &606381949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606381944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca3ca470ecd73248a8148c4d2060d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619213130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2276,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0100f1667c163d34a9a885362aa4772d, type: 3}
+--- !u!1 &1058006969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1058006971}
+  - component: {fileID: 1058006970}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1058006970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058006969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4418919ff474f14449f6487909c36ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1058006971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058006969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1652.0375, y: 899.9979, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069286396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2610,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181349762}
-  - component: {fileID: 1181349763}
   m_Layer: 5
   m_Name: 'Settings Menu '
   m_TagString: Untagged
@@ -2582,19 +2642,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1181349763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181349761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a97fbfc2ce54e748abdf41ad62844f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonClickSFX: {fileID: 0}
 --- !u!1 &1207998697
 GameObject:
   m_ObjectHideFlags: 0

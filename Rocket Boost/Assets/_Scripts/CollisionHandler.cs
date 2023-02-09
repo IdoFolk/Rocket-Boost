@@ -59,7 +59,10 @@ public class CollisionHandler : MonoBehaviour
     }
     public void PlayLowFuelSFX()
     {
-        if(!generalAudioSource.isPlaying) generalAudioSource.PlayOneShot(lowFuelSound);
+        if (!generalAudioSource.isPlaying && !GameManager.GamePaused)
+        {
+            generalAudioSource.PlayOneShot(lowFuelSound);
+        }
     }
     
     private void NextLevel()

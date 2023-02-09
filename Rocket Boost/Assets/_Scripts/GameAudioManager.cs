@@ -5,8 +5,6 @@ using UnityEngine;
 public class GameAudioManager : MonoBehaviour
 {
     public static GameAudioManager instance;
-    public static bool musicOn = true;
-    public static bool sfxOn = true;
 
     public AudioSource mainThrusterAudioSource;
     public AudioSource sideThrusterAudioSource;
@@ -28,19 +26,21 @@ public class GameAudioManager : MonoBehaviour
     }
     private void Start()
     {
-        musicOn = MenuAudioManager.musicOn;
-        sfxOn = MenuAudioManager.sfxOn;
         DontDestroyOnLoad(gameObject);
     }
-    public void ToggleMusicGame()
+    private void OnEnable()
     {
-        if (musicOn)
+        CheckAudio();
+    }
+    public void ToggleMusic()
+    {
+        if (GameManager.musicOn)
         {
             foreach (var audioSource in musicAudioSource)
             {
                 audioSource.volume = 0;
             }
-            musicOn = false;
+            GameManager.musicOn = false;
         }
         else
         {
@@ -48,18 +48,18 @@ public class GameAudioManager : MonoBehaviour
             {
                 audioSource.volume = gameMusicVolume;
             }
-            musicOn = true;
+            GameManager.musicOn = true;
         }
     }
-    public void ToggleSFXGame()
+    public void ToggleSFX()
     {
-        if (sfxOn)
+        if (GameManager.sfxOn)
         {
             foreach (var audioSource in sfxAudioSource)
             {
                 audioSource.volume = 0;
             }
-            sfxOn = false;
+            GameManager.sfxOn = false;
         }
         else
         {
@@ -67,7 +67,46 @@ public class GameAudioManager : MonoBehaviour
             {
                 audioSource.volume = gameSFXVolume;
             }
-            sfxOn = true;
+            GameManager.sfxOn = true;
+        }
+    }
+    public void StopSFX()
+    {
+        foreach (var audioSource in sfxAudioSource)
+        {
+            audioSource.Stop();
+        }
+    }
+    public void CheckAudio()
+    {
+        if (GameManager.musicOn)
+        {
+            foreach (var audioSource in musicAudioSource)
+            {
+                audioSource.volume = gameMusicVolume;
+            }
+        }
+        else
+        {
+            foreach (var audioSource in musicAudioSource)
+            {
+                audioSource.volume = 0;
+            }
+        }
+
+        if (GameManager.sfxOn)
+        {
+            foreach (var audioSource in sfxAudioSource)
+            {
+                audioSource.volume = gameSFXVolume;
+            }
+        }
+        else
+        {
+            foreach (var audioSource in sfxAudioSource)
+            {
+                audioSource.volume = 0;
+            }
         }
     }
 }

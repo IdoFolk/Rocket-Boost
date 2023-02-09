@@ -5,42 +5,71 @@ using UnityEngine.SceneManagement;
 
 public class MenuAudioManager : MonoBehaviour
 {
-    public static bool musicOn = true;
-    public static bool sfxOn = true;
+    public static MenuAudioManager instance;
 
     [SerializeField] AudioSource menuMusic;
     [SerializeField] AudioSource menuSFX;
     [SerializeField] float menuMusicVolume;
     [SerializeField] float menuSFXVolume;
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     private void Start()
     {
-        musicOn = GameAudioManager.musicOn;
-        sfxOn = GameAudioManager.sfxOn;
+        DontDestroyOnLoad(gameObject);
     }
     public void ToggleMusicMenu()
     {
-        if (musicOn)
+        if (GameManager.musicOn)
         {
             menuMusic.volume = 0;
-            musicOn = false;
+            GameManager.musicOn = false;
         }
         else
         {
             menuMusic.volume = menuMusicVolume;
-            musicOn = true;
+            GameManager.musicOn = true;
         }
     }
     public void ToggleSFXMenu()
     {
-        if (sfxOn)
+        if (GameManager.sfxOn)
         {
             menuSFX.volume = 0;
-            sfxOn = false;
+            GameManager.sfxOn = false;
         }
         else
         {
             menuSFX.volume = menuSFXVolume;
-            sfxOn = true;
+            GameManager.sfxOn = true;
+        }
+    }
+    public void CheckAudio()
+    {
+        if (GameManager.musicOn)
+        {
+            menuMusic.volume = menuMusicVolume;
+        }
+        else
+        {
+            menuMusic.volume = 0;
+        }
+
+        if (GameManager.sfxOn)
+        {
+            menuSFX.volume = menuSFXVolume;
+        }
+        else
+        {
+            menuSFX.volume = 0;
         }
     }
 }
