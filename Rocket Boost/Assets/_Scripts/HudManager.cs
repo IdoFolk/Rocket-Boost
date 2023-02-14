@@ -11,11 +11,22 @@ public class HudManager : MonoBehaviour
     [SerializeField] Image leftControlButton;
     [SerializeField] Image rightControlButton;
     [SerializeField] Image upControlButton;
+    [SerializeField] Image[] lives;
 
     private Color defaultColor;
     private void Start()
     {
+        CheckLives();
         defaultColor = leftControlButton.color;
+    }
+    public void CheckLives()
+    {
+        int currentHP = GameManager.instance.currentHP;
+        for (int i = 0; i < lives.Length; i++)
+        {
+            if (i < currentHP) lives[i].gameObject.SetActive(true);
+            else lives[i].gameObject.SetActive(false);
+        }
     }
     public void PressedLeftControlButtonColor()
     {
@@ -41,4 +52,5 @@ public class HudManager : MonoBehaviour
     {
         upControlButton.color = defaultColor;
     }
+    
 }

@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Inspector
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 46
+  controlID: 101
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 133
+  controlID: 91
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 134
+  controlID: 92
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -474,9 +474,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 20640000
-      m_LastClickedID: 0
-      m_ExpandedIDs: f0a7ffff34abffff00b8ffff64beffff46c2ffff9ccbffffcecfffff1ce1ffff72e4ffff1afbfffff4ffffff907e0000c07e00006a85000044890000ee9300001e94000080960000
+      m_SelectedIDs: b696ffff
+      m_LastClickedID: -26954
+      m_ExpandedIDs: 2c98ffff4e9cffff669fffff4ac8ffffced5ffff78e1ffff52f1ffff52f4ffff76f7ffff1afbffff8677000032a40000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -758,9 +758,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 897.16516, y: 528.5244, z: -87.94244}
+    m_Target: {x: 88.69998, y: 922.173, z: 0}
     speed: 2
-    m_Value: {x: 897.16516, y: 528.5244, z: -87.94244}
+    m_Value: {x: 88.69998, y: 922.173, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -811,9 +811,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.13787316, y: -0.0055098077, z: -0.00018549223, w: -0.9904346}
   m_Size:
-    m_Target: 590.13586
+    m_Target: 132.23283
     speed: 2
-    m_Value: 590.13586
+    m_Value: 132.23283
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -943,23 +943,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: "C:\\Users\\\u05E2\u05D9\u05D3\u05D5 \u05E4\u05D5\u05DC\u05E7\u05DE\u05DF\\Documents\\GitHub\\Rocket-Boost\\Rocket
     Boost"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16640000
-    m_LastClickedID: 25622
-    m_ExpandedIDs: 000000000264000000ca9a3b
+    scrollPos: {x: 0, y: 77}
+    m_SelectedIDs: 14640000
+    m_LastClickedID: 25620
+    m_ExpandedIDs: 000000000464000018640000da790000247a0000287a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -987,7 +987,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000002640000
+    m_ExpandedIDs: 0000000004640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1018,18 +1018,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c62300003e9d0000409d0000429d0000c4460100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Skin_Assets
+      m_OriginalName: Skin_Assets
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 31272
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:

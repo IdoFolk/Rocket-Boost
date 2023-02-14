@@ -10,6 +10,8 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float respawnDelay = 1f;
     [SerializeField] float finishDelay = 1f;
     [SerializeField] RocketMovement rocketMovement;
+    [SerializeField] HudManager hudManager;
+
 
     [Header("Particle")]
     [SerializeField] ParticleSystem crashParticleEffect;
@@ -77,12 +79,14 @@ public class CollisionHandler : MonoBehaviour
     }
     private void RocketCrash()
     {
-            rocketMovement.StopAllEffectsAndSounds();
-            generalAudioSource.Stop();
-            isTransitioning = true;
-            generalAudioSource.PlayOneShot(crashSound);
-            crashParticleEffect.Play();
-            Invoke("Respawn", respawnDelay);
+        GameManager.instance.LoseOneLife();
+        hudManager.CheckLives();
+        rocketMovement.StopAllEffectsAndSounds();
+        generalAudioSource.Stop();
+        isTransitioning = true;
+        generalAudioSource.PlayOneShot(crashSound);
+        crashParticleEffect.Play();
+        Invoke("Respawn", respawnDelay);
     }
     private void Respawn()
     {

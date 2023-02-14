@@ -15,7 +15,6 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] float rotationPower = 100f;
     [SerializeField] Rigidbody rb;
     
-
     [Header("Particle")]
     [SerializeField] ParticleSystem mainThrustEffect;
     [SerializeField] ParticleSystem rightThrustEffect;
@@ -30,8 +29,8 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] float fuelConsumption;
     [SerializeField] float fuelCapsulesValue;
     [SerializeField] float lowFuelDetectionRange;
-    public float fuel; //temp
 
+    private float fuel;
     private bool leftPressed;
     private bool rightPressed;
     private bool spacePressed;

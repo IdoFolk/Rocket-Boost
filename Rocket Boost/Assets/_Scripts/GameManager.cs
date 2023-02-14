@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public static bool sfxOn = true;
     public static bool GamePaused;
 
+
+    public int currentHP { get; private set; }
+    [Header("Life")]
+    [SerializeField] int maxHP;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -26,12 +31,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        currentHP = maxHP;
     }
 
     void Update()
     {
         PauseMenu();
     }
+    public void LoseOneLife()
+    {
+        currentHP--;
+        if (currentHP == 0) RestartGame();
+    }
+
+    private void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void ActivateBackgroundMusicDelay()
     {
         Invoke("ActivateBackgroundMusic", 0.1f);
