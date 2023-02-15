@@ -8,14 +8,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public static bool musicOn = true;
-    public static bool sfxOn = true;
-    public static bool GamePaused;
+    public bool musicOn = true;
+    public bool sfxOn = true;
+    public bool GamePaused;
 
+    //Lives:
+    public int CurrentHP { get; private set; }
+    private int maxHP = 5;
 
-    public int currentHP { get; private set; }
-    [Header("Life")]
-    [SerializeField] int maxHP;
+    //Stats:
+    public int LevelsCompleted;
+    public int TimePassedMinutes;
+    public int TimePassedSeconds;
+    public bool timerActive;
+    public float timer; // temp
 
     private void Awake()
     {
@@ -31,37 +37,59 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        currentHP = maxHP;
+        CurrentHP = maxHP;
     }
 
     void Update()
     {
+        Timer();
         PauseMenu();
     }
     public void LoseOneLife()
     {
-        currentHP--;
-        if (currentHP == 0) RestartGame();
+        CurrentHP--;
+        if (CurrentHP == 0) YouLostScreen();
     }
-
-    private void RestartGame()
+    public void ResetStats()
     {
-        SceneManager.LoadScene(1);
+        CurrentHP = maxHP;
+        LevelsCompleted = 0;
+        TimePassedSeconds = 0;
+        TimePassedMinutes = 0;
+        timerActive = false;
+        timer = 0;
     }
-
-    public void ActivateBackgroundMusicDelay()
+    public void ActivateManagersDelay()
     {
-        Invoke("ActivateBackgroundMusic", 0.1f);
+        Invoke("ActivateManagers", 0.1f);
     }
-    private void ActivateBackgroundMusic()
+    private void Timer()
+    {
+        if (timerActive && !GamePaused)
+        {
+            timer += Time.deltaTime;
+            TimePassedMinutes = (int)timer / 60;
+            TimePassedSeconds = (int)timer % 60;
+        }
+    }
+    private void YouLostScreen()
+    {
+        GameOverMenu.instance.GetStats();
+        GameOverMenu.instance.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        GamePaused = true;
+    }
+    private void ActivateManagers()
     {
         GameAudioManager.instance.gameObject.SetActive(true);
+        HudManager.instance.gameObject.SetActive(true);
+        HudManager.instance.CheckLives();
     }
     private void PauseMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GamePaused)
         {
-            if (!DontDestroyPauseMenu.instance.gameObject.activeSelf)
+            if (!DontDestroyPauseMenu.instance.gameObject.activeSelf && !GameOverMenu.instance.gameObject.activeSelf)
             {
                 GameAudioManager.instance.StopSFX();
                 Time.timeScale = 0;

@@ -34,13 +34,13 @@ public class GameAudioManager : MonoBehaviour
     }
     public void ToggleMusic()
     {
-        if (GameManager.musicOn)
+        if (GameManager.instance.musicOn)
         {
             foreach (var audioSource in musicAudioSource)
             {
                 audioSource.volume = 0;
             }
-            GameManager.musicOn = false;
+            GameManager.instance.musicOn = false;
         }
         else
         {
@@ -48,18 +48,18 @@ public class GameAudioManager : MonoBehaviour
             {
                 audioSource.volume = gameMusicVolume;
             }
-            GameManager.musicOn = true;
+            GameManager.instance.musicOn = true;
         }
     }
     public void ToggleSFX()
     {
-        if (GameManager.sfxOn)
+        if (GameManager.instance.sfxOn)
         {
             foreach (var audioSource in sfxAudioSource)
             {
                 audioSource.volume = 0;
             }
-            GameManager.sfxOn = false;
+            GameManager.instance.sfxOn = false;
         }
         else
         {
@@ -67,7 +67,7 @@ public class GameAudioManager : MonoBehaviour
             {
                 audioSource.volume = gameSFXVolume;
             }
-            GameManager.sfxOn = true;
+            GameManager.instance.sfxOn = true;
         }
     }
     public void StopSFX()
@@ -79,7 +79,7 @@ public class GameAudioManager : MonoBehaviour
     }
     public void CheckAudio()
     {
-        if (GameManager.musicOn)
+        if (GameManager.instance.musicOn)
         {
             foreach (var audioSource in musicAudioSource)
             {
@@ -94,7 +94,7 @@ public class GameAudioManager : MonoBehaviour
             }
         }
 
-        if (GameManager.sfxOn)
+        if (GameManager.instance.sfxOn)
         {
             foreach (var audioSource in sfxAudioSource)
             {

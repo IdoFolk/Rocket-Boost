@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb0065fd57572c4bb596ff7bb33b4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelBar: {fileID: 0}
   collisionHandler: {fileID: 8032542313434018989}
+  hudManager: {fileID: 0}
   thrustPower: 1000
   rotationPower: 100
   rb: {fileID: 2064461861033298715}
@@ -170,9 +170,7 @@ MonoBehaviour:
   sideThrusteraudioSource: {fileID: 0}
   fuelTank: 10
   fuelConsumption: 2
-  fuelCapsulesValue: 5
   lowFuelDetectionRange: 4
-  fuel: 0
 --- !u!114 &8032542313434018989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,9 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b841cd1f457354ab068aa460640b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTransitioning: 0
   respawnDelay: 1.8
   finishDelay: 1
   rocketMovement: {fileID: 2064461861033298714}
+  hudManager: {fileID: 0}
   crashParticleEffect: {fileID: 2190538552097852925}
   finishParticleEffect: {fileID: 2190962707782684072}
   generalAudioSource: {fileID: 0}

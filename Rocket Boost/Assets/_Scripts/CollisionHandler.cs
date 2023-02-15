@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    public bool isTransitioning;
+
     [Header("General")]
     [SerializeField] float respawnDelay = 1f;
     [SerializeField] float finishDelay = 1f;
     [SerializeField] RocketMovement rocketMovement;
     [SerializeField] HudManager hudManager;
-
 
     [Header("Particle")]
     [SerializeField] ParticleSystem crashParticleEffect;
@@ -24,10 +25,10 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip fuelCapsuleSound;
     [SerializeField] AudioClip lowFuelSound;
     
-    private bool isTransitioning;
     private bool collisionDisabled;
     private void Start()
     {
+        hudManager = HudManager.instance;
         generalAudioSource = GameAudioManager.instance.generalAudioSource;
     }
     private void Update()
@@ -61,7 +62,7 @@ public class CollisionHandler : MonoBehaviour
     }
     public void PlayLowFuelSFX()
     {
-        if (!generalAudioSource.isPlaying && !GameManager.GamePaused)
+        if (!generalAudioSource.isPlaying && !GameManager.instance.GamePaused)
         {
             generalAudioSource.PlayOneShot(lowFuelSound);
         }
@@ -79,8 +80,6 @@ public class CollisionHandler : MonoBehaviour
     }
     private void RocketCrash()
     {
-        GameManager.instance.LoseOneLife();
-        hudManager.CheckLives();
         rocketMovement.StopAllEffectsAndSounds();
         generalAudioSource.Stop();
         isTransitioning = true;
@@ -90,15 +89,18 @@ public class CollisionHandler : MonoBehaviour
     }
     private void Respawn()
     {
+        GameManager.instance.LoseOneLife();
+        hudManager.CheckLives();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     private void FinishLevel()
     {
-            generalAudioSource.Stop();
-            isTransitioning = true;
-            generalAudioSource.PlayOneShot(finishSound);
-            finishParticleEffect.Play();
-            Invoke("NextLevel", finishDelay);
+        GameManager.instance.LevelsCompleted++;
+        generalAudioSource.Stop();
+        isTransitioning = true;
+        generalAudioSource.PlayOneShot(finishSound);
+        finishParticleEffect.Play();
+        Invoke("NextLevel", finishDelay);
     }
     private void GetFuelCapsule(Collider other)
     {
@@ -116,6 +118,10 @@ public class CollisionHandler : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.C))
         {
             collisionDisabled = !collisionDisabled;
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            Respawn();
         }
     }
 }

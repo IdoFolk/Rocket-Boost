@@ -23,14 +23,15 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseMenuCanvas.SetActive(false);
-        GameManager.GamePaused = false;
+        GameManager.instance.GamePaused = false;
     }
     public void BackToMainMenu()
     {
-        GameManager.GamePaused = false;
+        GameManager.instance.GamePaused = false;
         Time.timeScale = 1;
         gameAudioManager.SetActive(false);
         pauseMenuCanvas.SetActive(false);
+        HudManager.instance.gameObject.SetActive(false);
         MenuAudioManager.instance.gameObject.SetActive(true);
         MenuAudioManager.instance.CheckAudio();
         DontDestroyMainMenu.instance.gameObject.SetActive(true);
@@ -43,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void CheckAudio()
     {
-        if (GameManager.musicOn)
+        if (GameManager.instance.musicOn)
         {
             musicButtonToggleOn.SetActive(true);
             musicButtonToggleOff.SetActive(false);
@@ -53,7 +54,7 @@ public class PauseMenu : MonoBehaviour
             musicButtonToggleOn.SetActive(false);
             musicButtonToggleOff.SetActive(true);
         }
-        if (GameManager.sfxOn)
+        if (GameManager.instance.sfxOn)
         {
             sfxButtonToggleOn.SetActive(true);
             sfxButtonToggleOff.SetActive(false);

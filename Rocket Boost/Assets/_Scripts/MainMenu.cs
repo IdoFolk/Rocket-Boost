@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject sfxButtonToggleOn;
     [SerializeField] GameObject sfxButtonToggleOff;
 
-    private void OnEnable()
+    private void Start()
     {
         CheckAudio();
     }
@@ -22,7 +22,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
         MenuAudioManager.instance.gameObject.SetActive(false);
         DontDestroyMainMenu.instance.gameObject.SetActive(false);
-        GameManager.instance.ActivateBackgroundMusicDelay();
+        GameManager.instance.ActivateManagersDelay();
+        GameManager.instance.ResetStats();
+        GameManager.instance.timerActive = true;
+        
     }
     public void ExitGame()
     {
@@ -35,7 +38,7 @@ public class MainMenu : MonoBehaviour
     }
     private void CheckAudio()
     {
-        if (GameManager.musicOn)
+        if (GameManager.instance.musicOn)
         {
             musicButtonToggleOn.SetActive(true);
             musicButtonToggleOff.SetActive(false);
@@ -45,7 +48,7 @@ public class MainMenu : MonoBehaviour
             musicButtonToggleOn.SetActive(false);
             musicButtonToggleOff.SetActive(true);
         }
-        if (GameManager.sfxOn)
+        if (GameManager.instance.sfxOn)
         {
             sfxButtonToggleOn.SetActive(true);
             sfxButtonToggleOff.SetActive(false);

@@ -27,7 +27,6 @@ public class RocketMovement : MonoBehaviour
     [Header("Fuel")]
     [SerializeField] float fuelTank;
     [SerializeField] float fuelConsumption;
-    [SerializeField] float fuelCapsulesValue;
     [SerializeField] float lowFuelDetectionRange;
 
     private float fuel;
@@ -36,9 +35,10 @@ public class RocketMovement : MonoBehaviour
     private bool spacePressed;
     private void Start()
     {
-        hudManager.fuelBar.maxValue = fuelTank;
+        hudManager = HudManager.instance;
         mainThrusteraudioSource = GameAudioManager.instance.mainThrusterAudioSource;
         sideThrusteraudioSource = GameAudioManager.instance.sideThrusterAudioSource;
+        hudManager.fuelBar.maxValue = fuelTank;
         fuel = fuelTank;
     }
     private void Update()
@@ -49,12 +49,15 @@ public class RocketMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!collisionHandler.isTransitioning)
+        {
             HandleRotation();
             HandleThrust();
+        }
     }
     public void AddFuel()
     {
-        fuel += fuelCapsulesValue;
+        fuel = fuelTank;
     }
     
     public void StopAllEffectsAndSounds()
