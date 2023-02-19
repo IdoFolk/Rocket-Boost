@@ -401,6 +401,8 @@
 "Assets/_Scripts/DontDestroyEventSystem.cs"
 "Assets/_Scripts/DontDestroyMainMenu.cs"
 "Assets/_Scripts/DontDestroyPauseMenu.cs"
+"Assets/_Scripts/EndingAudioManager.cs"
+"Assets/_Scripts/EndingScreen.cs"
 "Assets/_Scripts/GameAudioManager.cs"
 "Assets/_Scripts/GameManager.cs"
 "Assets/_Scripts/GameOverMenu.cs"

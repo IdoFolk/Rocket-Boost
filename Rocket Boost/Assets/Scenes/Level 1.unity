@@ -4827,6 +4827,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2525299262714194492, guid: 8fa07bfe49a2e6a4fb31b6af9ccea608, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6833615165833643725, guid: 8fa07bfe49a2e6a4fb31b6af9ccea608, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 15
@@ -4858,6 +4862,10 @@ PrefabInstance:
     - target: {fileID: 7405102751855795523, guid: 8fa07bfe49a2e6a4fb31b6af9ccea608, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4290690604
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838209974737223458, guid: 8fa07bfe49a2e6a4fb31b6af9ccea608, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000038146973
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa07bfe49a2e6a4fb31b6af9ccea608, type: 3}

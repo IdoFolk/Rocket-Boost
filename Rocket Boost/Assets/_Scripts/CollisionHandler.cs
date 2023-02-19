@@ -31,10 +31,6 @@ public class CollisionHandler : MonoBehaviour
         hudManager = HudManager.instance;
         generalAudioSource = GameAudioManager.instance.generalAudioSource;
     }
-    private void Update()
-    {
-        CheatCodes();
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (isTransitioning || collisionDisabled) return;
@@ -72,9 +68,10 @@ public class CollisionHandler : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
-        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        if (nextSceneIndex == 6)
         {
-            nextSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+            GameAudioManager.instance.gameObject.SetActive(false);
+            hudManager.gameObject.SetActive(false);
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
@@ -108,20 +105,5 @@ public class CollisionHandler : MonoBehaviour
         generalAudioSource.PlayOneShot(fuelCapsuleSound);
         rocketMovement.AddFuel();
         other.gameObject.SetActive(false);
-    }
-    private void CheatCodes()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            NextLevel();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            collisionDisabled = !collisionDisabled;
-        }
-        else if (Input.GetKeyDown(KeyCode.O))
-        {
-            Respawn();
-        }
     }
 }
