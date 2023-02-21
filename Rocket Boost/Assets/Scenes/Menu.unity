@@ -964,7 +964,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479152341}
-  - component: {fileID: 479152342}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -995,23 +994,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &479152342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479152340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a97fbfc2ce54e748abdf41ad62844f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonClickSFX: {fileID: 1311123676}
-  musicButtonToggleOn: {fileID: 910440648}
-  musicButtonToggleOff: {fileID: 1365187096}
-  sfxButtonToggleOn: {fileID: 2116322051}
-  sfxButtonToggleOff: {fileID: 1388249581}
 --- !u!1 &490580997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,9 +1582,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 606381944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca3ca470ecd73248a8148c4d2060d72, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a97fbfc2ce54e748abdf41ad62844f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 1311123676}
+  musicButtonToggleOn: {fileID: 910440648}
+  musicButtonToggleOff: {fileID: 1365187096}
+  sfxButtonToggleOn: {fileID: 2116322051}
+  sfxButtonToggleOff: {fileID: 1388249581}
 --- !u!1 &619213130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +1961,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -2199,7 +2186,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -2951,7 +2938,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -2963,7 +2950,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -3261,7 +3248,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
@@ -3273,7 +3260,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -3431,7 +3418,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -3601,7 +3588,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -8854,7 +8841,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1
@@ -9162,7 +9149,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 479152342}
+      - m_Target: {fileID: 606381949}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayClickSFX
         m_Mode: 1

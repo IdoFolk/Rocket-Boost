@@ -6,22 +6,34 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public static MainMenu instance;
     [SerializeField] AudioSource buttonClickSFX;
 
     [SerializeField] GameObject musicButtonToggleOn;
     [SerializeField] GameObject musicButtonToggleOff;
     [SerializeField] GameObject sfxButtonToggleOn;
     [SerializeField] GameObject sfxButtonToggleOff;
-
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         CheckAudio();
     }
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
         MenuAudioManager.instance.gameObject.SetActive(false);
-        DontDestroyMainMenu.instance.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         GameManager.instance.ActivateManagersDelay();
         GameManager.instance.ResetStats();
         GameManager.instance.timerActive = true;
@@ -36,7 +48,7 @@ public class MainMenu : MonoBehaviour
         buttonClickSFX.Stop();
         buttonClickSFX.Play();
     }
-    private void CheckAudio()
+    public void CheckAudio()
     {
         if (GameManager.instance.musicOn)
         {

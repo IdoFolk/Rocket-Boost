@@ -399,7 +399,6 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 "Assets/_Scripts/CollisionHandler.cs"
 "Assets/_Scripts/DontDestroyEventSystem.cs"
-"Assets/_Scripts/DontDestroyMainMenu.cs"
 "Assets/_Scripts/DontDestroyPauseMenu.cs"
 "Assets/_Scripts/EndingAudioManager.cs"
 "Assets/_Scripts/EndingScreen.cs"

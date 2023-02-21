@@ -8,7 +8,8 @@ public class EndingScreen : MonoBehaviour
     public void BackToMainMenu()
     {
         MenuAudioManager.instance.gameObject.SetActive(true);
-        DontDestroyMainMenu.instance.gameObject.SetActive(true);
+        MainMenu.instance.gameObject.SetActive(true);
+        MainMenu.instance.CheckAudio();
         SceneManager.LoadScene(0);
     }
 }

@@ -34,7 +34,8 @@ public class PauseMenu : MonoBehaviour
         HudManager.instance.gameObject.SetActive(false);
         MenuAudioManager.instance.gameObject.SetActive(true);
         MenuAudioManager.instance.CheckAudio();
-        DontDestroyMainMenu.instance.gameObject.SetActive(true);
+        MainMenu.instance.gameObject.SetActive(true);
+        MainMenu.instance.CheckAudio();
         SceneManager.LoadScene(0);
     }
     public void PlayClickSFX()
